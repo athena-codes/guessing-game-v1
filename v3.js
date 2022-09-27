@@ -1,8 +1,11 @@
 const readline = require('readline')
 
+
 const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout });
+    output: process.stdout
+});
+
 
 const randomInRange = ((min, max) => {
 
@@ -10,7 +13,7 @@ const randomInRange = ((min, max) => {
     return res
 })
 
-let secretNumber = randomInRange(0, 100)
+let secretNumber = randomInRange(0, 10)
 
 
 const checkGuess = (num) => {
@@ -29,22 +32,21 @@ const checkGuess = (num) => {
 // console.log(checkGuess())
 
 const askGuess = (entry) => {
-    +
     checkGuess(entry)
 
     if (Number(entry) < secretNumber) {
-    rl.question("Guess Again: ", askGuess)
+        rl.question("Guess Again: ", askGuess)
 
     } else if (Number(entry) > secretNumber) {
-    rl.question("Guess Again: ", askGuess)
+        rl.question("Guess Again: ", askGuess)
 
     } else if (Number(entry) === secretNumber) {
         console.log("You Win!")
         rl.close()
 
     } else if (entry === "" || typeof entry !== "number") {
-    rl.question("Please guess a number: ", askGuess)
- }
+        rl.question("Please guess a number: ", askGuess)
+    }
 }
 
 rl.question('Guess a number 1-10!:', askGuess);
